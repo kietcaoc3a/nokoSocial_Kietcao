@@ -423,10 +423,6 @@ imgFile.addEventListener("change", function (e) {
       reader.readAsDataURL(file);
       isOpen = true;
    }
-   // else {
-   //    preImage.style.display = null;
-   //    preImage.setAttribute("src", "");
-   // }
 });
 
 imgFile.addEventListener("click", (e) => {
@@ -453,7 +449,6 @@ function closeBtn() {
    isOpen = false;
 
    if (textVal === "") activatePost(btnPost, true, "var(--color-Notallowed)", "not-allowed");
-   else textVal = "";
 }
 document.querySelector(".middle .create-post .your-post .card .images-preview .close-btn").addEventListener("click", closeBtn);
 // ---------------------- End Close ImageUpload --------------------
@@ -592,10 +587,33 @@ btnPost.addEventListener("click", () => {
       <div class="bookmark">
          <span><i class="uil uil-bookmark-full"></i></span>
       </div>
-   </div>`
+
+   </div>
+
+   <div class="liked-by">
+      <span><img src=""> </span>
+      <span><img src=""> </span>
+      <span><img src=""> </span>
+      <p><b></b><b></b></p>
+   </div>
+
+   <div class="like-comment-share">
+      <div class="common like">
+         <i class="uil uil-thumbs-up"></i>
+         <span>Like</span>
+      </div>
+      <div class="common comment">
+         <i class="uil uil-comment-alt"></i>
+         <span>Comment</span>
+      </div>
+      <div class="common share">
+         <i class="uil uil-share"></i>
+         <span>Share</span>
+      </div>
+   </div>
+   `
+
    const srcImg = newFeed.querySelector(".photo img");
-   // if (source != "" && source != null) 
-   // else srcImg.src = "";
    srcImg.src = source;
    if (source.indexOf("http") != -1) srcImg.src = "";
    const divCap = newFeed.querySelector(".caption");
@@ -608,9 +626,11 @@ btnPost.addEventListener("click", () => {
    activatePost(btnPost, true, "var(--color-Notallowed)", "not-allowed");
    imgFile.style.display = "none";
    preCard.style.display = "none";
-   // preImage.style.display = "none";
-   // imgFile.disabled = false;
    closeBtn();
+   textVal = "";
+   // Like = document.querySelectorAll(".like-comment-share .like");
+   // console.log(Like);
+   // likeImgs();
 });
 
 textArea.addEventListener("keyup", changePost);
@@ -630,6 +650,3 @@ function activatePost(el, dis, bg, cur) {
    el.style.background = bg;
    el.style.cursor = cur;
 }
-
-// ========================= Adding Post To Middle ===================
-

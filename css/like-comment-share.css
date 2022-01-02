@@ -1,0 +1,30 @@
+.like-comment-share{
+   display: flex;
+   font-size: 16px;
+   padding: 5px 0;
+   margin-top: 13px;
+   border-top: 1px solid var(--color-gray);
+   /* border-bottom: 1px solid var(--color-gray); */
+   box-sizing: border-box;
+   color: var(--color-black);
+   text-align: center;
+}
+
+.like-comment-share .common{
+   width: 100%;
+   transition: 0.05s ease-in;
+}
+
+.like-comment-share .common i{
+   font-size: 20px;
+}
+
+.like-comment-share .common:hover{
+   background: var(--color-common);
+   opacity: 0.8;
+   cursor: pointer;
+}
+
+.like-comment-share .common:active{
+   transform: scale(0.955);
+}
