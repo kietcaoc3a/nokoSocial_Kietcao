@@ -1,6 +1,7 @@
 // ------------------- Side Bar ----------------
 const menuItem = document.querySelectorAll(".menu-item");
 const size = menuItem.length;
+let active = 0;
 let check_click = new Boolean(size);
 for (let i = 1; i < size; i++) {
    check_click[i] = false;
@@ -294,22 +295,35 @@ categoryActive.forEach((item, index) => {
          });
          check_click[3] = true;
          menuItem[3].classList.add("active");
+         active = 0;
          e.stopPropagation();
+         document.querySelector("#message-search").disabled = false;
       }
       else if (index === 2) {
          document.querySelector(".right .friend-requests").style.display = "block";
+         const friends = document.querySelectorAll(".right .friend-requests .request");
+         displayActive(friends, "block");
          check_click[3] = true;
          menuItem[3].classList.add("active");
+         document.querySelector("#message-search").disabled = false;
+         active = 2;
          e.stopPropagation();
       }
       else {
          check_click[3] = true;
          menuItem[3].classList.add("active");
+         document.querySelector("#message-search").disabled = true;
          e.stopPropagation();
       }
    });
 });
-console.log(categoryActive);
+
+function displayActive(e, type) {
+   e.forEach((item) => {
+      item.style.display = type;
+   });
+}
+// console.log(categoryActive);
 
 function deleteCategory() {
    for (let i = 0; i < categoryActive.length; i++) {
@@ -369,6 +383,9 @@ preCard.addEventListener("mouseover", (e) => {
    if (isOpen) {
       preCard.classList.add("nohover");
    }
+   else {
+      preCard.classList.remove("nohover");
+   }
 });
 
 btlClose.addEventListener("mouseenter", (e) => {
@@ -384,7 +401,7 @@ let preImage = document.querySelector(".middle .create-post .card .images-previe
 document.querySelector(".middle .create-post .your-post .card .add-post .icon-input .iconInput1").addEventListener("click", (e) => {
    preCard.style.display = "grid";
    imgFile.disabled = false;
-
+   activatePost(btnPost, false, "var(--color-primary)", "pointer");
 });
 
 
@@ -406,6 +423,10 @@ imgFile.addEventListener("change", function (e) {
       reader.readAsDataURL(file);
       isOpen = true;
    }
+   // else {
+   //    preImage.style.display = null;
+   //    preImage.setAttribute("src", "");
+   // }
 });
 
 imgFile.addEventListener("click", (e) => {
@@ -415,21 +436,26 @@ imgFile.addEventListener("click", (e) => {
 });
 
 // ---------------------- Close ImageUpload --------------------
-document.querySelector(".middle .create-post .your-post .card .images-preview .close-btn").addEventListener("click", (e) => {
+function closeBtn() {
    document.querySelector(".middle .create-post .your-post .card .images-preview").style.display = "none";
+
    imgFile.disabled = true;
 
    preImage.setAttribute("src", "");
    imgFile.value = null;
 
    preImage.style.display = "none";
+   preImage.style.visibility = "none";
 
    document.querySelector("#image-preview-default1").style.display = "block";
    document.querySelector("#image-preview-default2").style.display = "block";
    document.querySelector("#icon1").style.display = "block";
    isOpen = false;
 
-});
+   if (textVal === "") activatePost(btnPost, true, "var(--color-Notallowed)", "not-allowed");
+   else textVal = "";
+}
+document.querySelector(".middle .create-post .your-post .card .images-preview .close-btn").addEventListener("click", closeBtn);
 // ---------------------- End Close ImageUpload --------------------
 
 // -------------------------- Drag Image -------------------------
@@ -455,7 +481,6 @@ document.querySelectorAll(".right .friend-requests .request .action").forEach(it
    })
 });
 const buttonList = document.querySelectorAll(".right .friend-requests .request .action ");
-console.log(buttonList);
 
 buttonList.forEach(item => {
    item.querySelectorAll("button").forEach(item1 => {
@@ -476,7 +501,7 @@ function creteNewFriends(source, textH5, textP) {
    const Message = document.createElement("div");
    Message.className = "message";
 
-   const ProfilePhoto = document.createElement("div");
+   const ProfilePhoto = document.createElement("div").textContent;
 
    Message.innerHTML = `
       <div class="profile-photo">
@@ -496,3 +521,115 @@ function creteNewFriends(source, textH5, textP) {
    document.querySelector(".right .messages").insertBefore(Message, RequestList);
    Message.style.display = "none";
 }
+
+// =============================== Search ========================
+document.querySelector("#message-search").addEventListener("keyup", filterFriends);
+function filterFriends() {
+   const searchMessage = document.querySelectorAll(".right .messages .message");
+   const searchRequest = document.querySelectorAll(".right .friend-requests .request");
+   const searchVal = this.value.toLowerCase();
+   if (active === 0) {
+      Search(searchMessage, "flex", ".message-body h5", searchVal);
+   }
+   else if (active === 2) {
+      Search(searchRequest, "block", ".requestInfo h5", searchVal);
+   }
+}
+
+function Search(e, type, query, searchVal) {
+   e.forEach((item) => {
+      if (item.querySelector(query).textContent.toLowerCase().indexOf(searchVal) != -1) {
+         item.style.display = type;
+      }
+      else {
+         item.style.display = "none";
+      }
+   });
+}
+
+// ====================================== Post ==========================
+let textVal = "";
+const textArea = document.querySelector(".create-post .your-post .card .text-area");
+const btnPost = document.querySelector(".middle .create-post .your-post .card .push-post button");
+btnPost.addEventListener("click", () => {
+   const Image = document.querySelector(".middle .create-post .card .images-preview .image-input");
+   const source = Image.src;
+   const newFeed = document.createElement("div");
+   newFeed.className = "feed";
+
+   newFeed.innerHTML = `
+   <div class="head">
+      <div class="user">
+         <div class="profile-photo">
+            <img src="/images/kiritoG.jpg">
+         </div>
+         <div class="ingo">
+            <h3>Cao Kiet</h3>
+            <small>1 minute ago</small>
+         </div>
+      </div>
+
+      <span class="edit">
+         <i class="uil uil-ellipsis-h"></i>
+      </span>
+   </div>
+
+   <div class="caption">
+      <p></p>
+   </div>
+
+   <div class="photo">
+      <img src="">
+   </div>
+
+   <div class="action-button">
+      <div class="interation-buttons">
+         <span><i class="uil uil-heart"></i></span>
+         <span><i class="uil uil-comment-dots"></i></span>
+         <span><i class="uil uil-share-alt"></i></span>
+      </div>
+
+      <div class="bookmark">
+         <span><i class="uil uil-bookmark-full"></i></span>
+      </div>
+   </div>`
+   const srcImg = newFeed.querySelector(".photo img");
+   // if (source != "" && source != null) 
+   // else srcImg.src = "";
+   srcImg.src = source;
+   if (source.indexOf("http") != -1) srcImg.src = "";
+   const divCap = newFeed.querySelector(".caption");
+   divCap.style.margin = "10px 0px 0px 7px";
+   divCap.querySelector("p").textContent = textVal;
+   divCap.querySelector("p").style.fontSize = "18px";
+   const feedBacks = document.querySelector(".middle .feeds");
+   feedBacks.append(newFeed);
+   textArea.value = "";
+   activatePost(btnPost, true, "var(--color-Notallowed)", "not-allowed");
+   imgFile.style.display = "none";
+   preCard.style.display = "none";
+   // preImage.style.display = "none";
+   // imgFile.disabled = false;
+   closeBtn();
+});
+
+textArea.addEventListener("keyup", changePost);
+
+function changePost() {
+   textVal = textArea.value;
+   if (textVal != "") {
+      activatePost(btnPost, false, "var(--color-primary)", "pointer");
+   }
+   else {
+      activatePost(btnPost, true, "var(--color-Notallowed)", "not-allowed");
+   }
+}
+
+function activatePost(el, dis, bg, cur) {
+   el.disabled = dis;
+   el.style.background = bg;
+   el.style.cursor = cur;
+}
+
+// ========================= Adding Post To Middle ===================
+

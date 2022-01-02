@@ -14,6 +14,7 @@
   --color-success: hsl(120, 95%, 65%);
   --color-danger: hsl(0, 95%, 65%);
   --color-black: hsl(252, 30%, 10%);
+  --color-Notallowed: #E0E0E0;
 
   --border-radius: 2rem;
   --card-border-radius: 1rem;
@@ -67,11 +68,11 @@ img {
    font-weight: 500;
    border-radius: var(--border-radius);
    cursor: pointer;
-   transition: all 300ms ease;
+   transition: all 150ms ease;
    font-size: 0.9rem;
 }
 
-.btn:hover {
+.btn:active {
   opacity: 0.8;
 }
 
@@ -565,11 +566,18 @@ iframe{
 
 .middle .create-post .your-post .card .push-post{
    margin-top: 1rem;
+   margin-bottom: 0;
 }
 
-.middle .create-post .your-post .card .push-post label{
+.middle .create-post .your-post .card .push-post button{
    width: 100%;
+   background: var(--color-Notallowed);
+   cursor: not-allowed;
+   height: 40px;
 }
+
+/* .middle .create-post .your-post .card .push-post button:active{ */
+/* } */
 
 /* .middle .create-post .your-post .card .push-post:hover{ */
 /*    background: black; */
@@ -641,7 +649,7 @@ main .container .right{
    padding: var(--card-padding);
    background: var(--color-white);
    border-radius: var(--card-border-radius);
-   height: 35rem;
+   height: 40.5rem;
    overflow: auto;
 
    /* For Firefox */
