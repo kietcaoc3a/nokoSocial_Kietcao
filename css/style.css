@@ -419,9 +419,8 @@ iframe{
    justify-content: center;
 }
 
-.middle .create-post .para:hover{
+.middle .create-post .para:not(.NOTHOVER):hover{
    background: #EBEAE7;
-   /* background: var(--color-gray); */
    cursor: pointer;
 }
 
@@ -438,7 +437,7 @@ iframe{
    left: 0;
    z-index: 100;
    text-align: center;
-   display: grid;
+   /* display: grid; */
    place-items: center;
    font-size: 0.9rem;
    border: 0 0 2rem hsl(var(--color-primary), 75%, 60%, 25%);
@@ -497,8 +496,8 @@ iframe{
    color: #cccccc;
    position: relative;
    display: none;
-   /* margin: 0 5% 1rem; */
    margin: 1.2rem 0rem;
+   transition: 0.1s ease-in;
 }
 
 .middle .create-post .your-post .card .images-preview:not(.nohover):hover{
@@ -639,6 +638,18 @@ iframe{
    margin-left: .5rem;
 }
 
+.middle .feeds .feed .head .user .profile-photo{
+   height: 2.7rem;
+}
+
+.middle .error{
+   padding: 5px;
+   color: var(--color-danger);
+   text-align: left;
+   /* display: block; */
+   display: none;
+}
+
 /* ========================== Right ============================ */
 main .container .right{
    height: max-content;
@@ -710,7 +721,7 @@ main .container .right{
 .right .messages .message .profile-photo img{
    border-radius: 50%;
    width: 50px;
-   height: 54px;
+   height: 50px;
 }
 
 .right .messages .message:last-child{

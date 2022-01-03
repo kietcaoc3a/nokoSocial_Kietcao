@@ -370,6 +370,7 @@ document.querySelector(".middle .create-post .your-post .card").addEventListener
 
 document.querySelector(".middle .create-post .your-post .card .heading-card .close-btn").addEventListener("click", (e) => {
    document.querySelector(".middle .create-post .your-post").style.display = "none";
+   error.style.display = "none";
 });
 // ------------------------------------ End Create Post -------------------------
 
@@ -401,6 +402,7 @@ let preImage = document.querySelector(".middle .create-post .card .images-previe
 document.querySelector(".middle .create-post .your-post .card .add-post .icon-input .iconInput1").addEventListener("click", (e) => {
    preCard.style.display = "grid";
    imgFile.disabled = false;
+   isClose = false;
    activatePost(btnPost, false, "var(--color-primary)", "pointer");
 });
 
@@ -432,6 +434,7 @@ imgFile.addEventListener("click", (e) => {
 });
 
 // ---------------------- Close ImageUpload --------------------
+let isClose = false;
 function closeBtn() {
    document.querySelector(".middle .create-post .your-post .card .images-preview").style.display = "none";
 
@@ -447,6 +450,7 @@ function closeBtn() {
    document.querySelector("#image-preview-default2").style.display = "block";
    document.querySelector("#icon1").style.display = "block";
    isOpen = false;
+   isClose = true;
 
    if (textVal === "") activatePost(btnPost, true, "var(--color-Notallowed)", "not-allowed");
 }
@@ -546,7 +550,12 @@ function Search(e, type, query, searchVal) {
 let textVal = "";
 const textArea = document.querySelector(".create-post .your-post .card .text-area");
 const btnPost = document.querySelector(".middle .create-post .your-post .card .push-post button");
+const error = document.querySelector(".middle .error");
 btnPost.addEventListener("click", () => {
+   if (!(isOpen || textVal)) {
+      error.style.display = "block";
+      return;
+   }
    const Image = document.querySelector(".middle .create-post .card .images-preview .image-input");
    const source = Image.src;
    const newFeed = document.createElement("div");
@@ -591,10 +600,7 @@ btnPost.addEventListener("click", () => {
    </div>
 
    <div class="liked-by">
-      <span><img src=""> </span>
-      <span><img src=""> </span>
-      <span><img src=""> </span>
-      <p><b></b><b></b></p>
+      <p><b></b></p>
    </div>
 
    <div class="like-comment-share">
@@ -610,6 +616,16 @@ btnPost.addEventListener("click", () => {
          <i class="uil uil-share"></i>
          <span>Share</span>
       </div>
+   </div>
+
+   <div class="COMMENT">
+      <div class="profile-photo">
+         <img src="./images/kiritoG.jpg">
+      </div>
+      <input type="text" class="write-comment" placeholder="Write your comment....">
+      <span><i class="uil uil-smile"></i></span>
+      <span><i class="uil uil-image"></i></span>
+      <span><i class="uil uil-camera"></i></span>
    </div>
    `
 
@@ -628,16 +644,20 @@ btnPost.addEventListener("click", () => {
    preCard.style.display = "none";
    closeBtn();
    textVal = "";
-   // Like = document.querySelectorAll(".like-comment-share .like");
-   // console.log(Like);
-   // likeImgs();
+   error.style.display = "none";
+
+   const newLike = newFeed.querySelector(".like-comment-share .like");
+   likeOneImg(newLike);
+
+   const newComment = newFeed.querySelector(".like-comment-share .comment");
+   commentPostFunc(newComment);
 });
 
 textArea.addEventListener("keyup", changePost);
 
 function changePost() {
    textVal = textArea.value;
-   if (textVal != "") {
+   if (textVal != "" || !isClose) {
       activatePost(btnPost, false, "var(--color-primary)", "pointer");
    }
    else {
