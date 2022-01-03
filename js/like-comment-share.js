@@ -63,9 +63,10 @@ function deleteImg(el, val, check = false) {
 
 // ======================================= Comment ==========================
 let Comment = document.querySelectorAll(".like-comment-share .comment");
+console.log(Array.from(Comment));
 
 function commentFunc(el) {
-   el.forEach((item) => {
+   Array.from(el).forEach((item) => {
       item.addEventListener("click", () => {
          if (!item.classList.contains("isCOMMENT")) {
             item.classList.add("isCOMMENT");
@@ -92,3 +93,5 @@ function commentPostFunc(item) {
    });
 }
 commentFunc(Comment);
+
+

@@ -41,7 +41,7 @@
    }
 }
 
-@media screen and (max-width: 1300px){
+@media screen and (max-width: 1400px){
    nav .search-bar{
       display: none;
    }
@@ -108,3 +108,22 @@
    }
 }
 
+@media screen and (max-width: 1700px){
+   .right .friend-requests .request .info .requestInfo
+   {
+      font-size: 15px;
+   }
+
+   .right .friend-requests .request .info p{
+      font-size: 10px;
+   }
+   
+   .right .friend-requests .request .info .profile-photo img{
+      height: 3rem;
+   }
+
+   .right .messages .message .message-body h5,
+   .right .messages .message .message-body p{
+      font-size: 10.1px;
+   }
+}

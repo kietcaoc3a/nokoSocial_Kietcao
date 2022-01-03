@@ -363,6 +363,7 @@ document.querySelector(".middle .para").addEventListener("click", (e) => {
 
 document.querySelector(".middle .create-post .your-post").addEventListener("click", (e) => {
    e.target.style.display = "none";
+   error.style.display = "none";
 });
 document.querySelector(".middle .create-post .your-post .card").addEventListener("click", (e) => {
    e.stopPropagation();
@@ -650,6 +651,7 @@ btnPost.addEventListener("click", () => {
    likeOneImg(newLike);
 
    const newComment = newFeed.querySelector(".like-comment-share .comment");
+   console.log(Array.from(newComment));
    commentPostFunc(newComment);
 });
 
