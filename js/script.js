@@ -672,3 +672,7 @@ function activatePost(el, dis, bg, cur) {
    el.style.background = bg;
    el.style.cursor = cur;
 }
+
+document.querySelector(".container .create").addEventListener("click", () => {
+   document.querySelector(".middle .create-post .your-post").style.display = "grid";
+});

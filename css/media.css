@@ -108,7 +108,7 @@
    }
 }
 
-@media screen and (max-width: 1700px){
+@media screen and (max-width: 1700px) {
    .right .friend-requests .request .info .requestInfo
    {
       font-size: 15px;
@@ -125,5 +125,11 @@
    .right .messages .message .message-body h5,
    .right .messages .message .message-body p{
       font-size: 10.1px;
+   }
+}
+
+@media screen and (max-width: 420) {
+   body{
+      width: 10%;
    }
 }
