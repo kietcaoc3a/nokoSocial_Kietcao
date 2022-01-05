@@ -405,6 +405,7 @@ document.querySelector(".middle .create-post .your-post .card .add-post .icon-in
    imgFile.disabled = false;
    isClose = false;
    activatePost(btnPost, false, "var(--color-primary)", "pointer");
+   document.querySelector(".middle .create-post .your-post .card .push-post button").classList.remove("disableHover");
 });
 
 
@@ -435,7 +436,7 @@ imgFile.addEventListener("click", (e) => {
 });
 
 // ---------------------- Close ImageUpload --------------------
-let isClose = false;
+let isClose = true;
 function closeBtn() {
    document.querySelector(".middle .create-post .your-post .card .images-preview").style.display = "none";
 
@@ -454,6 +455,7 @@ function closeBtn() {
    isClose = true;
 
    if (textVal === "") activatePost(btnPost, true, "var(--color-Notallowed)", "not-allowed");
+   document.querySelector(".middle .create-post .your-post .card .push-post button").classList.add("disableHover");
 }
 document.querySelector(".middle .create-post .your-post .card .images-preview .close-btn").addEventListener("click", closeBtn);
 // ---------------------- End Close ImageUpload --------------------
@@ -657,13 +659,22 @@ btnPost.addEventListener("click", () => {
 
 textArea.addEventListener("keyup", changePost);
 
+console.log(document.querySelector(".middle .create-post .your-post .card .push-post button").classList);
 function changePost() {
    textVal = textArea.value;
-   if (textVal != "" || !isClose) {
+   // || !isClose
+   if (textVal != "") {
       activatePost(btnPost, false, "var(--color-primary)", "pointer");
+      document.querySelector(".middle .create-post .your-post .card .push-post button").classList.remove("disableHover");
    }
    else {
-      activatePost(btnPost, true, "var(--color-Notallowed)", "not-allowed");
+      if (!isClose) {
+         activatePost(btnPost, false, "var(--color-primary)", "pointer");
+      }
+      else {
+         activatePost(btnPost, true, "var(--color-Notallowed)", "not-allowed");
+         document.querySelector(".middle .create-post .your-post .card .push-post button").classList.add("disableHover");
+      }
    }
 }
 

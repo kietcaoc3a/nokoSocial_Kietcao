@@ -430,8 +430,8 @@ iframe{
 
 .middle .create-post .your-post{
    background: rgba(255, 255, 255, 0.5);
-   width: 100vw;
-   height: 100vh;
+   width: 100%;
+   height: 100%;
    position: fixed;
    top: 0;
    left: 0;
@@ -575,14 +575,17 @@ iframe{
    background: var(--color-Notallowed);
    cursor: not-allowed;
    height: 40px;
+   transition: transform 0.1s ease-in;
 }
 
-/* .middle .create-post .your-post .card .push-post button:active{ */
-/* } */
+.middle .create-post .your-post .card .push-post button:active{
+   transform: scale(0.955);
+}
 
-/* .middle .create-post .your-post .card .push-post:hover{ */
-/*    background: black; */
-/* } */
+.middle .create-post .your-post .card .push-post button:not(.disableHover):hover{
+   opacity: 0.5;
+}
+
 /* ------------------------- Feedbacks ----------------------- */
 .middle .feeds .feed{
    background: var(--color-white);
