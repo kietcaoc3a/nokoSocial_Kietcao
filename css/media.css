@@ -73,14 +73,22 @@
 
    .left .explores-popup{
       position: absolute;
-      left: -40rem;
-      width: auto;
+      left: -27.5rem;
+      width: 430px;
+      height: 430px;
+      right: 0;
+   }
+   
+   .left .explores-popup iframe{
+      position: absolute;
+      width: 400px;
+      height: 400px;
    }
 
    .left .explores-popup::before{
       display: absolute;
       top: 1rem;
-      left: calc(40rem - 1.1rem);
+      left: calc(40rem - 14rem);
       display: block;
    }
 
