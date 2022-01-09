@@ -86,7 +86,6 @@
    }
 
    .left .explores-popup::before{
-      display: absolute;
       top: 1rem;
       left: calc(40rem - 14rem);
       display: block;
@@ -136,7 +135,7 @@
    }
 }
 
-@media screen and (max-width: 420) {
+@media screen and (max-width: 420px) {
    body{
       width: 10%;
    }

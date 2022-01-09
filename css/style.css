@@ -795,8 +795,8 @@ main .container .right{
 /* =============================== Customization Theme ========================== */
 .customize-theme{
    background: rgba(255, 255, 255, 0.5);
-   width: 100vw;
-   height: 100vh;
+   width: 100%;
+   height: 100%;
    position: fixed;
    top: 0;
    left: 0;
@@ -842,8 +842,8 @@ main .container .right{
 }
 
 .customize-theme .choose-size span{
-   width: 1rem;
-   height: 1rem;
+   width: .8rem;
+   height: .8rem;
    background: var(--color-secondary);
    border-radius: 50%;
    cursor: pointer;
@@ -868,10 +868,9 @@ main .container .right{
 }
 
 .customize-theme .color .choose-color span{
-   width: 2.2rem;
-   height: 2.2rem;
+   width: 1.5rem;
+   height: 1.5rem;
    border-radius: 50%;
-   background: red;
    cursor: pointer;
 }
 
