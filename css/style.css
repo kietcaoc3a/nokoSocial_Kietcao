@@ -344,6 +344,7 @@ iframe{
    font-size: 0.75rem;
    position: relative;
    overflow: hidden;
+   transition: 1s ease-in-out;
 }
 
 .middle .stories .story img{
@@ -520,6 +521,15 @@ iframe{
 #file-input {
    width: 100%;
    height: 100%;
+}
+
+.middle .create-post .your-post .card .overflowImg{
+   max-height: 350px;
+   overflow: auto;
+}
+
+.middle .create-post .your-post .card .overflowImg::-webkit-scrollbar{
+   display: none;
 }
 
 .middle .create-post .your-post .card .images-preview .close-btn{
