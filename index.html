@@ -12,9 +12,9 @@
    <link rel="stylesheet" href="css/style.css">
    <link rel="stylesheet" href="css/media.css">
    <link rel="stylesheet" href="css/like-comment-share.css">
-   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" -->
-   <!--    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" -->
-   <!--    crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -323,9 +323,20 @@
 
                   <div class="like-comment-share">
                      <div class="common like">
-                        <i class="uil uil-thumbs-up"></i>
-                        <span>Like</span>
+                        <div class="likeHeading">
+                           <i class="uil uil-thumbs-up"></i>
+                           <span>Like</span>
+                        </div>
+                        <div class="animation-like">
+                           <span><span class="emojis">Like</span><i class="fas fa-thumbs-up"></i></span>
+                           <span><span class="emojis">Love</span><i class="fas fa-heart"></i></span>
+                           <span><span class="emojis">Haha</span><i class="fas fa-laugh-squint"></i></span>
+                           <span><span class="emojis">Wow</span><i class="fas fa-surprise"></i></span>
+                           <span><span class="emojis">Sad</span><i class="fas fa-sad-tear"></i></span>
+                           <span><span class="emojis">Angry</span><i class="fas fa-angry"></i></span>
+                        </div>
                      </div>
+
                      <div class="common comment">
                         <i class="uil uil-comment-alt"></i>
                         <span>Comment</span>
@@ -335,14 +346,42 @@
                         <span>Share</span>
                      </div>
                   </div>
+
+                  <div class="comment-popup">
+                     <!-- <div class="commentAdding"> -->
+                     <!--    <div class="profile-photo"> -->
+                     <!--       <img src="./images/kiritoG.jpg"> -->
+                     <!--    </div> -->
+                     <!--    <div class="comment-text"> -->
+                     <!--       <h4>Cao Kiet</h4> -->
+                     <!--       <p class="edit-text-comment" contenteditable="true"></p> -->
+                     <!--    </div> -->
+                     <!--    <div class="emoji-comment"> -->
+                     <!--       <div class="edit-delete-center"> -->
+                     <!--          <div class="edit-delete"> -->
+                     <!--             <div class="emoji-common edit-comment"> -->
+                     <!--                <i class="uil uil-pen"></i><span>Edit</span> -->
+                     <!--             </div> -->
+                     <!--             <div class="emoji-common delete-comment"> -->
+                     <!--                <i class="uil uil-trash-alt"></i><span>Delete</span> -->
+                     <!--             </div> -->
+                     <!--          </div> -->
+                     <!--          <span class="span"><i class="uil uil-ellipsis-h"></i></span> -->
+
+                     <!--       </div> -->
+                     <!--    </div> -->
+                     <!-- </div> -->
+                  </div>
+
                   <div class="COMMENT">
                      <div class="profile-photo">
                         <img src="./images/kiritoG.jpg">
                      </div>
-                     <input type="text" class="write-comment" placeholder="Write your comment....">
-                     <span><i class="uil uil-smile"></i></span>
-                     <span><i class="uil uil-image"></i></span>
-                     <span><i class="uil uil-camera"></i></span>
+                     <textarea type="text" class="write-comment" rows="1"
+                        placeholder="Write your comment...."></textarea>
+                     <!-- <span><i class="uil uil-smile"></i></span> -->
+                     <!-- <span><i class="uil uil-image"></i></span> -->
+                     <!-- <span><i class="uil uil-camera"></i></span> -->
                   </div>
 
                   <!-- <div class="caption"> -->
@@ -396,8 +435,18 @@
 
                   <div class="like-comment-share">
                      <div class="common like">
-                        <i class="uil uil-thumbs-up"></i>
-                        <span>Like</span>
+                        <div class="likeHeading">
+                           <i class="uil uil-thumbs-up"></i>
+                           <span>Like</span>
+                        </div>
+                        <div class="animation-like">
+                           <span><span class="emojis">Like</span><i class="fas fa-thumbs-up"></i></span>
+                           <span><span class="emojis">Love</span><i class="fas fa-heart"></i></span>
+                           <span><span class="emojis">Haha</span><i class="fas fa-laugh-squint"></i></span>
+                           <span><span class="emojis">Wow</span><i class="fas fa-surprise"></i></span>
+                           <span><span class="emojis">Sad</span><i class="fas fa-sad-tear"></i></span>
+                           <span><span class="emojis">Angry</span><i class="fas fa-angry"></i></span>
+                        </div>
                      </div>
                      <div class="common comment">
                         <i class="uil uil-comment-alt"></i>
@@ -409,14 +458,16 @@
                      </div>
                   </div>
 
+                  <div class="comment-popup">
+
+                  </div>
+
                   <div class="COMMENT">
                      <div class="profile-photo">
                         <img src="./images/kiritoG.jpg">
                      </div>
-                     <input type="text" class="write-comment" placeholder="Write your comment....">
-                     <span><i class="uil uil-smile"></i></span>
-                     <span><i class="uil uil-image"></i></span>
-                     <span><i class="uil uil-camera"></i></span>
+                     <textarea type="text" class="write-comment" rows="1"
+                        placeholder="Write your comment...."></textarea>
                   </div>
                   <!-- <div class="caption"> -->
                   <!--    <p><b>Kirito and Asuna</b> are in Sai Gon. <span class="harsh-tag">#lifestyle</span></p> -->
@@ -469,8 +520,18 @@
 
                   <div class="like-comment-share">
                      <div class="common like">
-                        <i class="uil uil-thumbs-up"></i>
-                        <span>Like</span>
+                        <div class="likeHeading">
+                           <i class="uil uil-thumbs-up"></i>
+                           <span>Like</span>
+                        </div>
+                        <div class="animation-like">
+                           <span><span class="emojis">Like</span><i class="fas fa-thumbs-up"></i></span>
+                           <span><span class="emojis">Love</span><i class="fas fa-heart"></i></span>
+                           <span><span class="emojis">Haha</span><i class="fas fa-laugh-squint"></i></span>
+                           <span><span class="emojis">Wow</span><i class="fas fa-surprise"></i></span>
+                           <span><span class="emojis">Sad</span><i class="fas fa-sad-tear"></i></span>
+                           <span><span class="emojis">Angry</span><i class="fas fa-angry"></i></span>
+                        </div>
                      </div>
                      <div class="common comment">
                         <i class="uil uil-comment-alt"></i>
@@ -482,14 +543,16 @@
                      </div>
                   </div>
 
+                  <div class="comment-popup">
+
+                  </div>
+
                   <div class="COMMENT">
                      <div class="profile-photo">
                         <img src="./images/kiritoG.jpg">
                      </div>
-                     <input type="text" class="write-comment" placeholder="Write your comment....">
-                     <span><i class="uil uil-smile"></i></span>
-                     <span><i class="uil uil-image"></i></span>
-                     <span><i class="uil uil-camera"></i></span>
+                     <textarea type="text" class="write-comment" rows="1"
+                        placeholder="Write your comment...."></textarea>
                   </div>
                   <!-- <div class="caption"> -->
                   <!--    <p><b>Kirito</b> are in a floor of the boss. <span class="harsh-tag">#lifestyle</span></p> -->
@@ -542,8 +605,18 @@
 
                   <div class="like-comment-share">
                      <div class="common like">
-                        <i class="uil uil-thumbs-up"></i>
-                        <span>Like</span>
+                        <div class="likeHeading">
+                           <i class="uil uil-thumbs-up"></i>
+                           <span>Like</span>
+                        </div>
+                        <div class="animation-like">
+                           <span><span class="emojis">Like</span><i class="fas fa-thumbs-up"></i></span>
+                           <span><span class="emojis">Love</span><i class="fas fa-heart"></i></span>
+                           <span><span class="emojis">Haha</span><i class="fas fa-laugh-squint"></i></span>
+                           <span><span class="emojis">Wow</span><i class="fas fa-surprise"></i></span>
+                           <span><span class="emojis">Sad</span><i class="fas fa-sad-tear"></i></span>
+                           <span><span class="emojis">Angry</span><i class="fas fa-angry"></i></span>
+                        </div>
                      </div>
                      <div class="common comment">
                         <i class="uil uil-comment-alt"></i>
@@ -555,14 +628,16 @@
                      </div>
                   </div>
 
+                  <div class="comment-popup">
+
+                  </div>
+
                   <div class="COMMENT">
                      <div class="profile-photo">
                         <img src="./images/kiritoG.jpg">
                      </div>
-                     <input type="text" class="write-comment" placeholder="Write your comment....">
-                     <span><i class="uil uil-smile"></i></span>
-                     <span><i class="uil uil-image"></i></span>
-                     <span><i class="uil uil-camera"></i></span>
+                     <textarea type="text" class="write-comment" rows="1"
+                        placeholder="Write your comment...."></textarea>
                   </div>
                   <!-- <div class="caption"> -->
                   <!--    <p><b>Asuna</b> is alone. <span class="harsh-tag">#lifestyle</span></p> -->

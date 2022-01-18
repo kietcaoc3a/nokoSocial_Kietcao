@@ -32,10 +32,8 @@ for (let i = 0; i < size; i++) {
             openNotification();
             e.stopPropagation();
             closeExplore();
-         }
-         else if (i === 3) {
-            openMessages();
-            check_click[i] = true;
+         } else if (i === 3) {
+            openMessages(); check_click[i] = true;
             closeNotification();
             closeExplore();
 
@@ -124,7 +122,6 @@ function openMessages() {
 // ----------------------- Customize Theme --------------------------------
 
 let Custom_Theme = document.querySelector(".customize-theme");
-// console.log(Custom_Theme);
 Custom_Theme.addEventListener("click", () => {
 });
 function openTheme() {
@@ -151,7 +148,6 @@ let chooseSize = document.querySelector(".customize-theme .font-size .choose-siz
 let n = chooseSize.children.length;
 let root = document.querySelector(":root");
 
-// console.log(document.querySelector("html").style.fontSize);
 chooseSize.querySelectorAll("span").forEach(MyFunc);
 
 function MyFunc(item, index) {
@@ -231,7 +227,6 @@ function removeActive() {
 
 // -------------------------------- Background ---------------------------------
 let backgroundList = document.querySelectorAll(".customize-theme .card .background .choose-bg div");
-// console.log(backgroundList);
 backgroundList.forEach(changeBg);
 function changeBg(item, index) {
    item.addEventListener("click", () => {
@@ -323,7 +318,6 @@ function displayActive(e, type) {
       item.style.display = type;
    });
 }
-// console.log(categoryActive);
 
 function deleteCategory() {
    for (let i = 0; i < categoryActive.length; i++) {
@@ -345,18 +339,7 @@ document.querySelector(".right .messages").addEventListener("click", (e) => {
 });
 // ---------------------------------- End Category Messages -----------------------------
 
-// ------------------------------------- Stories ----------------------------
-let storyList = document.querySelectorAll(".middle .stories .story");
-// console.log(storyList);
-// storyList.forEach((item, index) => {
-//    item.addEventListener("mouseenter", (e) => {
-//       item.classList.add("active");
-//    });
-// });
-// ------------------------------------- End Stories ----------------------------
-
 // ------------------------------------ Create Post -------------------------
-// console.log(document.querySelector(".middle .create-post .your-post"));
 document.querySelector(".middle .para").addEventListener("click", (e) => {
    document.querySelector(".middle .create-post .your-post").style.display = "grid";
 });
@@ -519,7 +502,6 @@ function creteNewFriends(source, textH5, textP) {
    Message.querySelector("img").src = source;
    Message.querySelector("h5").textContent = textH5;
    Message.querySelector("p").textContent = textP;
-   // console.log(Message);
    document.querySelector(".right .messages").insertBefore(Message, RequestList);
    Message.style.display = "none";
 }
@@ -608,8 +590,18 @@ btnPost.addEventListener("click", () => {
 
    <div class="like-comment-share">
       <div class="common like">
-         <i class="uil uil-thumbs-up"></i>
-         <span>Like</span>
+         <div class="likeHeading">
+            <i class="uil uil-thumbs-up"></i>
+            <span>Like</span>
+         </div>
+         <div class="animation-like">
+            <span><span class="emojis">Like</span><i class="fas fa-thumbs-up"></i></span>
+            <span><span class="emojis">Love</span><i class="fas fa-heart"></i></span>
+            <span><span class="emojis">Haha</span><i class="fas fa-laugh-squint"></i></span>
+            <span><span class="emojis">Wow</span><i class="fas fa-surprise"></i></span>
+            <span><span class="emojis">Sad</span><i class="fas fa-sad-tear"></i></span>
+            <span><span class="emojis">Angry</span><i class="fas fa-angry"></i></span>
+         </div>
       </div>
       <div class="common comment">
          <i class="uil uil-comment-alt"></i>
@@ -621,48 +613,66 @@ btnPost.addEventListener("click", () => {
       </div>
    </div>
 
+   <div class="comment-popup">
+
+   </div>
+
    <div class="COMMENT">
       <div class="profile-photo">
          <img src="./images/kiritoG.jpg">
       </div>
-      <input type="text" class="write-comment" placeholder="Write your comment....">
-      <span><i class="uil uil-smile"></i></span>
-      <span><i class="uil uil-image"></i></span>
-      <span><i class="uil uil-camera"></i></span>
+      <textarea type="text" class="write-comment" rows="1"
+         placeholder="Write your comment...."></textarea>
    </div>
    `
 
    const srcImg = newFeed.querySelector(".photo img");
    srcImg.src = source;
    if (source.indexOf("http") != -1) srcImg.src = "";
+
+   const feedBacks = document.querySelector(".middle .feeds");
+   feedBacks.append(newFeed);
+
    const divCap = newFeed.querySelector(".caption");
    divCap.style.margin = "10px 0px 0px 7px";
    divCap.querySelector("p").textContent = textVal;
    divCap.querySelector("p").style.fontSize = "18px";
-   const feedBacks = document.querySelector(".middle .feeds");
-   feedBacks.append(newFeed);
+
    textArea.value = "";
+   textVal = "";
+
    activatePost(btnPost, true, "var(--color-Notallowed)", "not-allowed");
    imgFile.style.display = "none";
    preCard.style.display = "none";
    closeBtn();
-   textVal = "";
    error.style.display = "none";
 
    const newLike = newFeed.querySelector(".like-comment-share .like");
-   likeOneImg(newLike);
+   newLike.addEventListener("click", likeOneImg);
+   newLike.addEventListener("mouseenter", mouseEnterLike);
+   newLike.addEventListener("mouseleave", mouseLeaveLike);
+
+   const aniLike = newFeed.querySelectorAll(".like-comment-share .animation-like span i");
+   aniLike.forEach(animationEmojiLike);
+
+   newFeed.querySelector(".like-comment-share .animation-like").addEventListener("click", (e) => {
+      e.stopPropagation();
+   })
+
 
    const newComment = newFeed.querySelector(".like-comment-share .comment");
-   console.log(Array.from(newComment));
-   commentPostFunc(newComment);
+   newComment.addEventListener("click", commentFunc);
+
+   const TextArea = newFeed.querySelector(".COMMENT textArea");
+   TextArea.addEventListener("input", autoResize);
+   TextArea.addEventListener("keypress", checkEnter);
+
 });
 
 textArea.addEventListener("keyup", changePost);
 
-console.log(document.querySelector(".middle .create-post .your-post .card .push-post button").classList);
 function changePost() {
    textVal = textArea.value;
-   // || !isClose
    if (textVal != "") {
       activatePost(btnPost, false, "var(--color-primary)", "pointer");
       document.querySelector(".middle .create-post .your-post .card .push-post button").classList.remove("disableHover");

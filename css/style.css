@@ -474,7 +474,7 @@ iframe{
    border-bottom: 3px solid var(--color-light);
 }
 
-.middle .create-post .your-post .card textarea{
+.middle .create-post .your-post .card .overflowImg .textArea textarea{
    font-size: 1.3rem;
    width: 100%;
    height: auto;
