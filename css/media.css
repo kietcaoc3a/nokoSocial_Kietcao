@@ -203,18 +203,18 @@
    }
 }
 
-@media screen and (max-height: 800px) {
-   .left .sidebar{
-      display: none;
-   }
-   .container{
-      width: 75%;
-   }
+/* @media screen and (max-height: 400px) { */
+/*    .left .sidebar{ */
+/*       display: none; */
+/*    } */
+/*    .container{ */
+/*       width: 75%; */
+/*    } */
 
-   .middle .create-post .your-post .card{
-      /* font-size: .1rem; */
-   }
-}
+/*    .middle .create-post .your-post .card{ */
+/*       /1* font-size: .1rem; *1/ */
+/*    } */
+/* } */
 @keyframes slideInFromLeft{
   0%{
     transform:  translateX(100%);
