@@ -698,6 +698,10 @@ main .container .right{
    margin-bottom: 1rem;
 }
 
+#message-search{
+   width: 100%;
+}
+
 .right .messages .category{
    display: flex;
    justify-content: space-between;
