@@ -19,49 +19,46 @@ const RemoveItem = () => {
 
 for (let i = 0; i < size; i++) {
    menuItem[i].addEventListener("click", (e) => {
+      closeAllSideBar();
       if (check_click[i] === false) {
-         RemoveItem(); menuItem[i].classList.add("active");
+         RemoveItem();
+         menuItem[i].classList.add("active");
          if (i === 1) {
             check_click[i] = true;
             openExplore();
             e.stopPropagation();
-            closeNotification();
          }
          else if (i === 2) {
             check_click[i] = true;
             openNotification();
             e.stopPropagation();
-            closeExplore();
          } else if (i === 3) {
-            openMessages(); check_click[i] = true;
-            closeNotification();
-            closeExplore();
-
+            openMessages();
+            check_click[i] = true;
          }
          else if (i === 6) {
             openTheme();
-            closeNotification();
-            closeExplore();
          }
          else {
-            closeNotification();
             check_click[i] = true;
-            closeExplore();
+            // document.querySelector("body").style.position = "fixed";
          }
       }
       else {
          check_click[i] = false;
          menuItem[0].classList.add("active");
+         menuItem[i].classList.remove("active");
          check_click[0] = true;
-         if (i === 2) {
-            closeNotification();
-         }
-         else if (i === 1) {
-            closeExplore();
-         }
       }
       e.stopPropagation();
    });
+}
+
+function closeAllSideBar() {
+   closeExplore();
+   closeNotification();
+   closeExplore();
+   closeMessages();
 }
 
 for (let x = 0; x < size; x++) {
@@ -88,10 +85,9 @@ document.querySelector(".notifications-popup").addEventListener("click", (e) => 
 });
 document.querySelector("body").addEventListener("click", () => {
    RemoveItem();
-   closeNotification();
-   closeExplore();
    check_click[0] = true;
    menuItem[0].classList.add("active");
+   closeAllSideBar();
 });
 // ------------ End Notifications ------------
 
@@ -112,10 +108,15 @@ document.querySelector(".explores-popup").addEventListener("click", (e) => {
 // ----------------------- Messages ------------------------------
 function openMessages() {
    document.querySelector(".right .messages").style.boxShadow = "0 0 1rem var(--color-primary)";
+   document.querySelector("main .container .right").classList.add("movein");
    document.getElementById("messages-notifications").querySelector(".notification-count").style.display = "none";
-   setTimeout(() => {
-      document.querySelector(".right .messages").style.boxShadow = "none";
-   }, 2000)
+   // setTimeout(() => {
+   // }, 2000)
+}
+
+function closeMessages() {
+   document.querySelector(".right .messages").style.boxShadow = "none";
+   document.querySelector("main .container .right").classList.remove("movein");
 }
 // ----------------------- End Messages ------------------------------
 
@@ -694,6 +695,6 @@ function activatePost(el, dis, bg, cur) {
    el.style.cursor = cur;
 }
 
-document.querySelector(".container .create").addEventListener("click", () => {
+document.querySelector(".container .create label").addEventListener("click", () => {
    document.querySelector(".middle .create-post .your-post").style.display = "grid";
 });

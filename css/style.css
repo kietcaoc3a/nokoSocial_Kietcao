@@ -153,6 +153,7 @@ main .container .left{
    position: sticky;
    top: var(--sticky-top);
    z-index: 5;
+   animation: slideInFromRight 1.5s;
 }
 
 
@@ -172,8 +173,6 @@ main .container .left .profile{
    margin-top: 1rem;
    background: var(--color-white);
    border-radius: var(--border-radius);
-   /* height: 25rem; */
-   /* overflow: auto; */
 }
 
 /* .left .sidebar::-webkit-scrollbar{ */
@@ -188,11 +187,6 @@ main .container .left .profile{
    cursor: pointer;
    translate: all 300ms ease;
    position: relative;
-}
-
-
-.left .sidebar .menu-item:hover{
-   background: var(--color-light);
 }
 
 .left .sidebar i{
@@ -325,6 +319,10 @@ iframe{
 /* ------------------------------------------ End Messages Popup ---------------------------- */
 
 /* ======================================= Middle =================================== */
+main .middle{
+   animation: slideInFromTop 1.5s;
+}
+
 .middle .stories{
    display: flex;
    justify-content: space-between;
@@ -354,7 +352,6 @@ iframe{
 .middle .stories .story:hover{
   transform: scale(1.0125);
   cursor: pointer;
-
 }
 
 .middle .stories .story::before{
@@ -667,8 +664,10 @@ iframe{
 main .container .right{
    height: max-content;
    position: sticky;
+   right: 0;
    top: var(--sticky-top);
    bottom: 0;
+   animation: slideInFromLeft 1.5s;
 }
 
 .right .messages{
@@ -733,8 +732,8 @@ main .container .right{
 
 .right .messages .message .profile-photo img{
    border-radius: 50%;
-   width: 50px;
-   height: 50px;
+   width: 3rem;
+   height: 3rem;
 }
 
 .right .messages .message:last-child{
@@ -793,13 +792,15 @@ main .container .right{
 
 .right .request .action{
    display: flex;
-   gap: 1rem;
-   justify-content: center;
+   /* gap: .3rem; */
+   justify-content: space-evenly;
 }
 
 .right .request .info .profile-photo{
-   width: 50px;
-   height: 50px;
+   max-width: 3rem;
+   max-height: 3rem;
+   width: 3rem;
+   height: 3rem;
 }
 
 /* =============================== Customization Theme ========================== */
@@ -820,11 +821,18 @@ main .container .right{
 }
 
 .customize-theme .card{
+   position: absolute;
+   /* bottom: -100%; */
    background: var(--color-white);
    padding: 3rem;
    border-radius: var(--card-border-radius);
    width: 50%;
    box-shadow: 0 0 1rem var(--color-primary);
+}
+.customize-theme .card.move{
+   animation: slideInFromBottom 1.5s;
+   /* bottom: 15%; */
+   /* top: 5rem; */
 }
 
 
